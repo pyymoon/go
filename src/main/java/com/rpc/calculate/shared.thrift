@@ -26,7 +26,6 @@ namespace cl shared
 namespace cpp shared
 namespace d share // "shared" would collide with the eponymous D keyword.
 namespace dart shared
-namespace java com.rpc.calculate.shared
 namespace perl shared
 namespace php shared
 namespace haxe shared

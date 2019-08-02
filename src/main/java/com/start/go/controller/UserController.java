@@ -27,7 +27,7 @@ public class UserController  {
         return "success";
     }
 
-    @GetMapping(path = "/getAll")
+    @GetMapping(path = "/all")
     public @ResponseBody Iterable<User> getAllUser(){
         return userReposity.findAll();
     }

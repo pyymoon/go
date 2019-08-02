@@ -14,38 +14,43 @@ public class Server {
         try {
             calculateHandler = new CalculateHandler();
             processor = new Calculator.Processor(calculateHandler);
-            Runnable simple = new Runnable() {
-                @Override
-                public void run() {
-                    simple(processor);
-                }
-            };
+//            Runnable simple = new Runnable() {
+//                @Override
+//                public void run() {
+//                    simple(processor);
+//                }
+//            };
 //            Runnable secure = new Runnable() {
 //                @Override
 //                public void run() {
 //                    secure(processor);
 //                }
 //            };
+            TServerTransport serverSocket = new TServerSocket(9090);
+            TServer tServer = new TSimpleServer(
+                    new TServer.Args(serverSocket).processor(processor));
 
-            new Thread(simple).start();
+            System.out.println("starting the simple server");
+            tServer.serve();
+//            new Thread(simple).start();
 //            new Thread(secure).start();
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public static void simple(Calculator.Processor processor){
-        try {
-            TServerTransport tServerTransport = new TServerSocket(9090);
-            TServer tServer = new TSimpleServer(
-                    new TServer.Args(tServerTransport).processor(processor));
-
-            System.out.println("starting the simple server");
-            tServer.serve();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+//    public static void simple(Calculator.Processor processor){
+//        try {
+//            TServerTransport tServerTransport = new TServerSocket(9090);
+//            TServer tServer = new TSimpleServer(
+//                    new TServer.Args(tServerTransport).processor(processor));
+//
+//            System.out.println("starting the simple server");
+//            tServer.serve();
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 
 //    public static void secure(Calculator.Processor processor){
 //        try {

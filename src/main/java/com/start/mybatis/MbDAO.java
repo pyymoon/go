@@ -1,6 +1,6 @@
 package com.start.mybatis;
 
-import org.apache.ibatis.annotations.Mapper;
+import tk.mybatis.mapper.common.Mapper;
 
 public interface MbDAO extends Mapper<MbEntity> {
 
